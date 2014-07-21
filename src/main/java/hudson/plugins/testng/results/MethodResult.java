@@ -35,7 +35,21 @@ public class MethodResult extends BaseResult {
     private Date startedAt;
     //a test instance name if one is provided using ITest interface
     private String testInstanceName;
-    //name of the <test> containing this method
+    /**
+	 * @return the testInstanceName
+	 */
+	public String getTestInstanceName() {
+		return testInstanceName;
+	}
+
+	/**
+	 * @param testInstanceName the testInstanceName to set
+	 */
+	public void setTestInstanceName(String testInstanceName) {
+		this.testInstanceName = testInstanceName;
+	}
+
+	//name of the <test> containing this method
     private String parentTestName;
     //name of the <suite> containing this method
     private String parentSuiteName;
