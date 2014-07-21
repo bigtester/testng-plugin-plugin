@@ -135,7 +135,7 @@ public class PackageResult extends BaseResult {
         for (MethodResult mr : mrList) {
             sb.append("<tr><td align=\"left\">");
             sb.append("<a href=\"").append(mr.getUpUrl()).append("\">");
-            sb.append(mr.getParent().getName()).append(".").append(mr.getName()).append("(").append(mr.getTestInstanceName()).append(")");
+            sb.append(mr.getParent().getName()).append(".").append(mr.getName()).append(" (").append(mr.getTestInstanceName()).append(")");
             sb.append("</a>");
             sb.append("</td><td align=\"center\">");
             sb.append(FormatUtil.formatTime(mr.getDuration()));
