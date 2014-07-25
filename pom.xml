@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.jenkins-ci.plugins</groupId>
         <artifactId>plugin</artifactId>
-        <version>1.526</version>
+        <version>1.554</version>
     </parent>
 
     <artifactId>testng-plugin</artifactId>
@@ -16,6 +16,7 @@
         <dependency>
             <groupId>org.jenkins-ci.main</groupId>
             <artifactId>maven-plugin</artifactId>
+            <version>2.3</version>
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
