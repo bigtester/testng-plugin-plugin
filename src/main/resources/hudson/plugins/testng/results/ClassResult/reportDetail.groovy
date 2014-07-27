@@ -28,7 +28,7 @@ for (group in my.testRunMap.values()) {
                 thead() {
                     tr() {
                         th(class:"pane-header") {
-                            text("Method")
+                            text("Method  (TestCase)")
                         }
                         th(class:"pane-header", style:"width:5em", title:"Duration") {
                             text("Duration")
@@ -46,7 +46,7 @@ for (group in my.testRunMap.values()) {
                         tr() {
                             td(align:"left") {
                                 a(href:"${method.upUrl}") {
-                                    text("${method.name}")
+                                    text("${method.name} (${method.testInstanceName})")
                                 }
                                 if (method.groups || method.testInstanceName || method.parameters?.size() > 0) {
                                     div(id:"${method.safeName}_1", style:"display:inline") {
@@ -92,49 +92,49 @@ for (group in my.testRunMap.values()) {
             text("No Test method was found in this class")
         }
 
-        h2("Configuration Methods")
-
-        if(group.configurationMethods) {
-            table(id:"config", border:"1px", class:"pane sortable") {
-                thead() {
-                    tr() {
-                        th(class:"pane-header") {
-                            text("Method")
-                        }
-                        th(class:"pane-header", style:"width:5em", title:"Duration") {
-                            text("Duration")
-                        }
-                        th(class:"pane-header", style:"width:5em", title:"Start time") {
-                            text("Start Time")
-                        }
-                        th(class:"pane-header", style:"width:5em", title:"Status") {
-                            text("Status")
-                        }
-                    }
-                }
-                tbody() {
-                    for(method in group.configurationMethods) {
-                        tr() {
-                            td(align:"left") {
-                                a(href:"${method.upUrl}") {
-                                    text("${method.name}")
-                                }
-                            }
-                            td(align:"right") {
-                                text("${FormatUtil.formatTime(method.duration)}")
-                            }
-                            td(align:"right") {
-                                text("${method.startedAt}")
-                            }
-                            td(align:"center", class:"${method.cssClass}") {
-                                text("${method.status}")
-                            }
-                        }
-                    }
-                }
-            }
-        } else {
-            text("No Configuration method was found in this class")
-        }
+//        h2("Configuration Methods")
+//
+//        if(group.configurationMethods) {
+//            table(id:"config", border:"1px", class:"pane sortable") {
+//                thead() {
+//                    tr() {
+//                        th(class:"pane-header") {
+//                            text("Method")
+//                        }
+//                        th(class:"pane-header", style:"width:5em", title:"Duration") {
+//                            text("Duration")
+//                        }
+//                        th(class:"pane-header", style:"width:5em", title:"Start time") {
+//                            text("Start Time")
+//                        }
+//                        th(class:"pane-header", style:"width:5em", title:"Status") {
+//                            text("Status")
+//                        }
+//                    }
+//                }
+//                tbody() {
+//                    for(method in group.configurationMethods) {
+//                        tr() {
+//                            td(align:"left") {
+//                                a(href:"${method.upUrl}") {
+//                                    text("${method.name}")
+//                                }
+//                            }
+//                            td(align:"right") {
+//                                text("${FormatUtil.formatTime(method.duration)}")
+//                            }
+//                            td(align:"right") {
+//                                text("${method.startedAt}")
+//                            }
+//                            td(align:"center", class:"${method.cssClass}") {
+//                                text("${method.status}")
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//        } else {
+//            text("No Configuration method was found in this class")
+//        }
     }
 }

@@ -67,6 +67,7 @@ public class ResultsParser {
    private List<ClassResult> currentClassList;
    private List<MethodResult> currentMethodList;
    private List<String> currentMethodParamsList;
+   private List<String> currentMethodStepsList;
    private TestNGTestResult currentTest;
    private ClassResult currentClass;
    private String currentTestRunId;
@@ -85,7 +86,7 @@ public class ResultsParser {
       TESTNG_RESULTS, SUITE, TEST, CLASS, TEST_METHOD,
       PARAMS, PARAM, VALUE, EXCEPTION, UNKNOWN, MESSAGE,
       SHORT_STACKTRACE, FULL_STACKTRACE, GROUPS, GROUP, METHOD,
-      REPORTER_OUTPUT, LINE;
+      REPORTER_OUTPUT, LINE, STEPS, STEP, STEPDESCRIPTION;
 
       public static TAGS fromString(String val) {
          if (val == null) {
@@ -194,6 +195,10 @@ public class ResultsParser {
                            startMethodParameters();
                            currentCDATAParent = TAGS.PARAMS;
                            break;
+                        case STEPS:
+                            startMethodSteps();
+                            currentCDATAParent = TAGS.STEPS;
+                            break;
                         case EXCEPTION:
                            startException(get("class"));
                            break;
@@ -240,6 +245,10 @@ public class ResultsParser {
                            finishMethodParameters();
                            currentCDATAParent = TAGS.UNKNOWN;
                            break;
+                        case STEPS:
+                            finishMethodSteps();
+                            currentCDATAParent = TAGS.UNKNOWN;
+                            break;
                         case EXCEPTION:
                            finishException();
                            break;
@@ -378,19 +387,30 @@ public class ResultsParser {
    {
       currentMethodParamsList = new ArrayList<String>();
    }
+   private void startMethodSteps()
+   {
+      currentMethodStepsList = new ArrayList<String>();
+   }
 
    private void finishMethodParameters()
    {
       currentMethod.setParameters(currentMethodParamsList);
       currentMethodParamsList = null;
    }
-
+   private void finishMethodSteps()
+   {
+      currentMethod.setSteps(currentMethodStepsList);
+      currentMethodStepsList = null;
+   }
    private void handleCDATA()
    {
       switch (currentCDATAParent) {
          case PARAMS:
             currentMethodParamsList.add(xmlPullParser.getText());
             break;
+         case STEPS:
+             currentMethodStepsList.add(xmlPullParser.getText());
+             break;
          case MESSAGE:
             currentMessage = xmlPullParser.getText();
             break;

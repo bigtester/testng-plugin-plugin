@@ -57,7 +57,23 @@ public class MethodResult extends BaseResult {
     private List<String> groups;
     //parameters passed into this test (if any)
     private List<String> parameters;
-    // already stored with lines separated using <br/>
+    
+    private List<String> steps;
+    /**
+	 * @return the steps
+	 */
+	public List<String> getSteps() {
+		return steps;
+	}
+
+	/**
+	 * @param steps the steps to set
+	 */
+	public void setSteps(List<String> steps) {
+		this.steps = steps;
+	}
+
+	// already stored with lines separated using <br/>
     private String reporterOutput;
 
     /**

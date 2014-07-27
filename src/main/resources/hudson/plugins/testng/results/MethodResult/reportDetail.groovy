@@ -36,7 +36,7 @@ div(id: "report") {
             text("Instance Name: ${my.testInstanceName}")
         }
     }
-
+	
     if (my.groups) {
         div(id: "groups") {
             p("Group(s): ${StringUtils.join(my.groups, ", ")}")
@@ -68,8 +68,35 @@ div(id: "report") {
             }
         }
     }
-
-    br()
+	br()
+	br()
+	if (my.steps?.size() > 0) {
+		table(border: "1px", class: "pane", id: "steps", style: "white-space:normal") {
+			thead() {
+				tr() {
+					th(class: "pane-header", style: "width:5em;")
+					th(class: "pane-header", title: "step description") {
+						text("Description")
+					}
+				}
+			}
+			tbody() {
+				def count = 1
+				for (step in my.steps) {
+					tr() {
+						td(align: "left") {
+							text("Step #${count++}")
+						}
+						td(align: "left") {
+							text("${step}")
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	br()
     br()
     img(id: "trend", src: "graph", lazymap: "graphMap", alt: "[Method Execution Trend Chart]")
 
