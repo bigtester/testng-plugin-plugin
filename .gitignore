@@ -4,7 +4,4 @@
 *.iml
 work/*
 target/*
-.settings/
-.classpath
-.project
 /target/
