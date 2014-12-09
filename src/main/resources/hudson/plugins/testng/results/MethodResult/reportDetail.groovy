@@ -13,7 +13,7 @@ def testngProjAction = my.owner.project.getAction(TestNGProjectAction.class)
 
 div(id: "report") {
     h1("${my.name}")
-    text("(from ")
+    text("(from1 ")
     a(href: "${my.parent.upUrl}", id: "parent") {
         text("${my.parent.name}")
     }
@@ -70,28 +70,48 @@ div(id: "report") {
     }
 	br()
 	br()
+	div (id: "stepsize") {
+		text("stepsize ${my.steps?.size()}")
+	}
 	if (my.steps?.size() > 0) {
 		table(border: "1px", class: "pane", id: "steps", style: "white-space:normal") {
 			thead() {
 				tr() {
 					th(class: "pane-header", style: "width:5em;")
 					th(class: "pane-header", title: "step description") {
-						text("Description")
+						text("Step Description")
+					}
+					th(class: "pane-header", title: "step description") {
+						text("Step Result")
 					}
 				}
 			}
 			tbody() {
-				def count = 1
-				for (step in my.steps) {
+				//def count = 1
+				
+				for (int count =  0; count < my.steps?.size(); count ++) {
 					tr() {
-						td(align: "left") {
-							text("Step #${count++}")
+							td(align: "left") {
+								text("Step #${count}")
+							}
+							td(align: "left") {
+								text("${my.stepDescriptions.get(count)}")
+							}
+							td(align: "left") {
+								text("${my.stepResults.get(count)}")
+							}
 						}
-						td(align: "left") {
-							text("${step}")
-						}
-					}
 				}
+//				for (step in my.steps) {
+//					tr() {
+//						td(align: "left") {
+//							text("Step #${count++}")
+//						}
+//						td(align: "left") {
+//							text("${step}")
+//						}
+//					}
+//				}
 			}
 		}
 	}

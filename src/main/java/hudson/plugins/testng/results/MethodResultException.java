@@ -39,11 +39,14 @@ public class MethodResultException implements Serializable {
    private void trySettingData(String shortStackTrace, String fullStackTrace)
    {
      String tmpStackTrace = shortStackTrace;
+     
      if (((shortStackTrace == null) || "".equals(shortStackTrace)) && (fullStackTrace != null)) {
         // overwrite short st with full st, if available
         tmpStackTrace = fullStackTrace;
+     } 
+     if (tmpStackTrace == null || "".equals(tmpStackTrace)) {
+    	 tmpStackTrace = "empty Stack Trace.";
      }
-
      stackTrace = tmpStackTrace.trim();
      int index = -1;
 

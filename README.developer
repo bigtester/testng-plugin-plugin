@@ -1,0 +1,4 @@
+1) changes are mainly staying in the MehtodResult module.
+	a. Add fields in MethodResult class
+	b. in MethodResult reportDetails.groovy, invoke each fields to display.
+	

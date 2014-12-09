@@ -59,11 +59,27 @@ public class MethodResult extends BaseResult {
     private List<String> parameters;
     
     private List<String> steps;
+    private List<String> stepDescriptions;
+    private List<String> stepResults;
     /**
 	 * @return the steps
 	 */
 	public List<String> getSteps() {
 		return steps;
+	}
+	
+	/**
+	 * @return the stepDescriptions
+	 */
+	public List<String> getStepDescriptions() {
+		return stepDescriptions;
+	}
+	
+	/**
+	 * @return the stepResults
+	 */
+	public List<String> getStepResults() {
+		return stepResults;
 	}
 
 	/**
@@ -71,6 +87,14 @@ public class MethodResult extends BaseResult {
 	 */
 	public void setSteps(List<String> steps) {
 		this.steps = steps;
+	}
+	
+	public void setStepDescriptions(List<String> stepDescriptions) {
+		this.stepDescriptions = stepDescriptions;
+	}
+	
+	public void setStepResults(List<String> stepResults) {
+		this.stepResults = stepResults;
 	}
 
 	// already stored with lines separated using <br/>
